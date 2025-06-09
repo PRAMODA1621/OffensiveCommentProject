@@ -9,7 +9,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score,classification_report
-train_df=pd.read_csv("C:/Users/nppra/PycharmProjects/PythonProject4/archive (16)/train.csv")
+train_df=pd.read_csv("archive (16)/train.csv")
 label_cols=['toxic','severe_toxic','obscene','threat','insult','identity_hate']
 train_df['offensive']=train_df[label_cols].max(axis=1)
 nltk.download('stopwords')
@@ -37,7 +37,7 @@ model=LogisticRegression()
 model.fit(X_train,Y_train)
 y_pred=model.predict(X_test)
 print("Accuracy : ",accuracy_score(Y_test,y_pred))
-test_df=pd.read_csv("C:/Users/nppra/PycharmProjects/PythonProject4/archive (16)/test.csv")
+test_df=pd.read_csv("archive (16)/test.csv")
 test_df['cleaned']=test_df['comment_text'].apply(clean_text)
 X_test = vectorizer.transform(test_df['cleaned'])
 test_preds = model.predict(X_test)
